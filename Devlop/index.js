@@ -26,4 +26,29 @@ async function promptUser() {
         }
 
     ]);
-    
+    const { github, colors } = data;
+
+    console.log(colors)
+    const profileData = await axios.get(`https://api.github.com/users/${github}`)
+    console.log(profileData)
+    const markdown = makeMarkdown(profileData.data, colors);
+    console.log(markdown)
+
+    fs.writeFile(`${profileData.data.login}.md`, markdown, (err) => {
+        if (err) throw err
+        console.log("wrote the file")
+    });
+};
+function makeMarkdown(userInfo, color) {
+    return `# <span style="color:${color}"> ${userInfo.name}</span>  
+<img src="${userInfo.avatar_url}" alt="coder photo" height="75"><br>
+Username: ${userInfo.login}  
+Bio: ${userInfo.bio}  
+Repo URL: [repo link](${userInfo.repos_url})  
+Public Repos:  ${userInfo.public_repos}  
+Followers: ${userInfo.followers}  
+Following: ${userInfo.following}  
+`
+}
+
+promptUser();
