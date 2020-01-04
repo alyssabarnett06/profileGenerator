@@ -19,7 +19,7 @@ The  MarkDown will be populated with the following:
 
 -Number of users following
 
-<img src="mdPage.pnd">
+<img src="./mdPage.pnd">
 
 
 
