@@ -19,6 +19,8 @@ The  MarkDown will be populated with the following:
 
 -Number of users following
 
+![Terminal Demo](Devlop/terminal.gif)
+
 <img src="mdPage.png">
 
 
